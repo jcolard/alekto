@@ -754,8 +754,32 @@ async function loadReadingIntoReader(id) {
   const pageControls = document.getElementById('reader-page-controls');
   contentArea.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">Chargement...</div>';
   
-  if (reading.pdf_url) {
-    let pdfPath = reading.pdf_url;
+  const isPartition = reading.type === 'Partition' || reading.type === 'partition';
+
+  if (isPartition) {
+    if (reading.pdf_url) {
+      renderPDF(reading.pdf_url);
+    } else if (reading.ref_md) {
+      loadMarkdown(reading.ref_md);
+    } else if (reading.contenu) {
+      renderContenu(reading.contenu);
+    } else {
+      renderEmpty();
+    }
+  } else {
+    if (reading.ref_md) {
+      loadMarkdown(reading.ref_md);
+    } else if (reading.pdf_url) {
+      renderPDF(reading.pdf_url);
+    } else if (reading.contenu) {
+      renderContenu(reading.contenu);
+    } else {
+      renderEmpty();
+    }
+  }
+
+  function renderPDF(pdfUrl) {
+    let pdfPath = pdfUrl;
     if (pdfPath && !pdfPath.startsWith('http://') && !pdfPath.startsWith('https://')) {
       pdfPath = './' + pdfPath;
     }
@@ -769,12 +793,13 @@ async function loadReadingIntoReader(id) {
       </div>
     `;
     pageControls.style.display = 'none';
-  } else if (reading.ref_md) {
+  }
+
+  async function loadMarkdown(refMd) {
     try {
-      const res = await fetch(reading.ref_md);
+      const res = await fetch(refMd);
       const markdown = await res.text();
       
-      // Parse pages using horizontal line separator '---'
       const rawPages = markdown.split(/\n---\r?\n/);
       readerState.pages = rawPages.map(page => parseMarkdown(page));
       readerState.currentPageIndex = 0;
@@ -786,24 +811,22 @@ async function loadReadingIntoReader(id) {
       if (reading.contenu) {
         renderContenu(reading.contenu);
       } else {
-        contentArea.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--color-brown);">Impossible de charger le texte.</div>`;
-        pageControls.style.display = 'none';
+        renderEmpty();
       }
     }
-  } else if (reading.contenu) {
-    renderContenu(reading.contenu);
-  } else {
+  }
+
+  function renderContenu(text) {
+    readerState.pages = [parseMarkdown(text)];
+    readerState.currentPageIndex = 0;
+    displayReaderPage();
+    setupReaderTapNavigation();
+  }
+
+  function renderEmpty() {
     contentArea.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-muted);">Aucun contenu disponible.</div>`;
     pageControls.style.display = 'none';
   }
-}
-
-function renderContenu(text) {
-  readerState.pages = [parseMarkdown(text)];
-  readerState.currentPageIndex = 0;
-  displayReaderPage();
-  setupReaderTapNavigation();
-}
 }
 
 // Display page of markdown in book view
