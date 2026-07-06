@@ -458,11 +458,21 @@ function renderArtistes() {
   articles.forEach(article => {
     const card = document.createElement('div');
     card.className = 'article-h-card';
+    
+    let displayDate = article.date;
+    if (displayDate && displayDate.includes('T')) {
+      try {
+        displayDate = new Date(displayDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch (e) {
+        // Fallback
+      }
+    }
+
     card.innerHTML = `
       <div class="article-h-cover" style="background-image: url('${article.image}')"></div>
       <div class="article-h-info">
         <h4>${article.titre}</h4>
-        <p>${article.date}</p>
+        <p>${displayDate}</p>
       </div>
     `;
     card.addEventListener('click', () => {
@@ -500,9 +510,10 @@ function filterAndRenderArtists(role) {
     };
     
     const keywords = mapping[role] || [];
-    filteredArtists = appData.artistes.filter(artist => 
-      keywords.some(kw => artist.role.toLowerCase().includes(kw.toLowerCase()))
-    );
+    filteredArtists = appData.artistes.filter(artist => {
+      const artistRole = artist.rôle || artist.role || '';
+      return keywords.some(kw => artistRole.toLowerCase().includes(kw.toLowerCase()));
+    });
   }
   
   filteredArtists.forEach(artist => {
@@ -510,10 +521,11 @@ function filterAndRenderArtists(role) {
     card.className = 'artist-card';
     
     // Role styling
+    const artistRole = artist.rôle || artist.role || '';
     let roleClass = 'role-ecrivain';
-    if (artist.role.includes('NARRAT') || artist.role.includes('Actrice')) {
+    if (artistRole.toLowerCase().includes('narrat') || artistRole.toLowerCase().includes('actrice')) {
       roleClass = 'role-narrateur';
-    } else if (artist.role.includes('Illustra')) {
+    } else if (artistRole.toLowerCase().includes('illustra')) {
       roleClass = 'role-illustrateur';
     }
     
@@ -617,9 +629,19 @@ function filterAndRenderReadings(type) {
     }
     
     let authorName = "Inconnu";
-    if (item.artiste_ref && item.artiste_ref.length > 0) {
-      const artist = appData.artistes.find(a => a.id === item.artiste_ref[0]);
+    const refList = getArtistIds(item.artiste_ref);
+    if (refList.length > 0) {
+      const artist = appData.artistes.find(a => a.id === refList[0]);
       if (artist) authorName = artist.nom;
+    }
+
+    let displayDate = item.date;
+    if (displayDate && displayDate.includes('T')) {
+      try {
+        displayDate = new Date(displayDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch (e) {
+        // Fallback
+      }
     }
 
     card.innerHTML = `
@@ -630,7 +652,7 @@ function filterAndRenderReadings(type) {
       </div>
       <div class="reading-info">
         <h4>${item.titre}</h4>
-        <p>${authorName} • ${item.date}</p>
+        <p>${authorName} • ${displayDate}</p>
         <div class="reading-desc">${item.description}</div>
       </div>
     `;
@@ -674,7 +696,8 @@ function loadAudioIntoPlayer(id) {
   const artistsContainer = document.getElementById('player-artists-list');
   artistsContainer.innerHTML = '';
   
-  audio.artiste_ref.forEach(artId => {
+  const refList = getArtistIds(audio.artiste_ref);
+  refList.forEach(artId => {
     const artist = appData.artistes.find(art => art.id === artId);
     if (artist) {
       const row = document.createElement('div');
@@ -683,7 +706,7 @@ function loadAudioIntoPlayer(id) {
         <div class="artist-row-avatar" style="background-image: url('${artist.image}')"></div>
         <div class="artist-row-info">
           <h4>${artist.nom}</h4>
-          <p>${artist.role}</p>
+          <p>${artist.rôle || artist.role}</p>
         </div>
       `;
       artistsContainer.appendChild(row);
@@ -720,35 +743,67 @@ async function loadReadingIntoReader(id) {
   readerState.currentReading = reading;
   
   // Resolve Author from first artiste_ref
-  let authorName = "Inconnu";
-  if (reading.artiste_ref && reading.artiste_ref.length > 0) {
-    const artist = appData.artistes.find(a => a.id === reading.artiste_ref[0]);
-    if (artist) authorName = artist.nom;
-  }
+  const authorName = getFirstArtistName(reading.artiste_ref);
 
   // Reader view header updates
   document.getElementById('reader-title-display').textContent = reading.titre;
   document.getElementById('reader-author-display').textContent = `Par ${authorName}`;
-  document.getElementById('reader-type-text').textContent = reading.type;
+  document.getElementById('reader-type-text').textContent = reading.type || 'Lecture';
   
   const contentArea = document.getElementById('reader-content-area');
+  const pageControls = document.getElementById('reader-page-controls');
   contentArea.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">Chargement...</div>';
   
-  try {
-    const res = await fetch(reading.ref_md);
-    const markdown = await res.text();
-    
-    // Parse pages using horizontal line separator '---'
-    const rawPages = markdown.split(/\n---\r?\n/);
-    readerState.pages = rawPages.map(page => parseMarkdown(page));
-    readerState.currentPageIndex = 0;
-    
-    displayReaderPage();
-    setupReaderTapNavigation();
-  } catch (error) {
-    console.error("Erreur de chargement du fichier Markdown :", error);
-    contentArea.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--color-brown);">Impossible de charger le texte. Fichier introuvable ou local.</div>`;
+  if (reading.pdf_url) {
+    let pdfPath = reading.pdf_url;
+    if (pdfPath && !pdfPath.startsWith('http://') && !pdfPath.startsWith('https://')) {
+      pdfPath = './' + pdfPath;
+    }
+    contentArea.innerHTML = `
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; width: 100%;">
+        <p style="text-align: center; color: var(--text-muted);">Ce document est disponible au format PDF.</p>
+        <iframe src="${pdfPath}" style="width: 100%; height: 500px; border: 1px solid var(--text-muted); border-radius: var(--radius-md);"></iframe>
+        <a href="${pdfPath}" target="_blank" class="font-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-orange); border-color: var(--color-orange); color: white; padding: 10px 20px;">
+          Ouvrir le PDF dans un nouvel onglet
+        </a>
+      </div>
+    `;
+    pageControls.style.display = 'none';
+  } else if (reading.ref_md) {
+    try {
+      const res = await fetch(reading.ref_md);
+      const markdown = await res.text();
+      
+      // Parse pages using horizontal line separator '---'
+      const rawPages = markdown.split(/\n---\r?\n/);
+      readerState.pages = rawPages.map(page => parseMarkdown(page));
+      readerState.currentPageIndex = 0;
+      
+      displayReaderPage();
+      setupReaderTapNavigation();
+    } catch (error) {
+      console.error("Erreur de chargement du fichier Markdown :", error);
+      if (reading.contenu) {
+        renderContenu(reading.contenu);
+      } else {
+        contentArea.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--color-brown);">Impossible de charger le texte.</div>`;
+        pageControls.style.display = 'none';
+      }
+    }
+  } else if (reading.contenu) {
+    renderContenu(reading.contenu);
+  } else {
+    contentArea.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-muted);">Aucun contenu disponible.</div>`;
+    pageControls.style.display = 'none';
   }
+}
+
+function renderContenu(text) {
+  readerState.pages = [parseMarkdown(text)];
+  readerState.currentPageIndex = 0;
+  displayReaderPage();
+  setupReaderTapNavigation();
+}
 }
 
 // Display page of markdown in book view
@@ -1042,9 +1097,26 @@ function formatTime(secs) {
 }
 
 // Get comma-separated string of artist names from reference IDs
-function getArtistNameString(refList) {
+function getArtistIds(artisteRef) {
+  if (!artisteRef) return [];
+  if (Array.isArray(artisteRef)) return artisteRef;
+  if (typeof artisteRef === 'string') {
+    return artisteRef.split(',').map(s => s.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function getArtistNameString(artisteRef) {
+  const refList = getArtistIds(artisteRef);
   return refList.map(refId => {
     const artist = appData.artistes.find(a => a.id === refId);
     return artist ? artist.nom : '';
   }).filter(name => name !== '').join(' & ');
+}
+
+function getFirstArtistName(artisteRef) {
+  const refList = getArtistIds(artisteRef);
+  if (refList.length === 0) return 'Inconnu';
+  const artist = appData.artistes.find(a => a.id === refList[0]);
+  return artist ? artist.nom : 'Inconnu';
 }

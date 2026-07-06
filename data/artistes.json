@@ -2,7 +2,7 @@
   {
     "id": "clara_malot",
     "nom": "Clara Malot",
-    "role": "ÉCRITAINE & ACTRICE",
+    "rôle": "Écrivaine & Actrice",
     "image": "assets/images/clara_malot.png",
     "description": "Spécialiste des contes écologiques. Clara imagine des mondes où la nature reprend ses droits avec douceur. Ses récits sont teintés de poésie et d'émerveillement.",
     "derniers_travaux": [
@@ -16,7 +16,7 @@
   {
     "id": "marc_voisin",
     "nom": "Marc Voisin",
-    "role": "NARRATEUR",
+    "rôle": "Narrateur",
     "image": "assets/images/marc_voisin.png",
     "description": "La 'voix d'or' d'Alekto. Marc a le don de transformer chaque lecture en un voyage sensoriel unique grâce à son timbre profond et apaisant.",
     "derniers_travaux": [],
@@ -27,7 +27,7 @@
   {
     "id": "yumi_sato",
     "nom": "Yumi Sato",
-    "role": "Illustratrice",
+    "rôle": "Illustratrice",
     "image": "assets/images/yumi_sato.png",
     "description": "Illustratrice jeunesse passionnée par les mondes fantastiques et oniriques.",
     "derniers_travaux": [],
@@ -41,7 +41,7 @@
   {
     "id": "julien_r",
     "nom": "Julien R.",
-    "role": "Auteur",
+    "rôle": "Auteur",
     "image": "assets/images/julien_r.png",
     "description": "Auteur passionné de science-fiction pour les enfants, inventant des voyages stellaires incroyables.",
     "derniers_travaux": [],
@@ -52,7 +52,7 @@
   {
     "id": "elena_marcet",
     "nom": "Elena Marcet",
-    "role": "Autrice & Narratrice",
+    "rôle": "Autrice & Narratrice",
     "image": "assets/images/elena_marcet.png",
     "description": "Elena écrit des contes philosophiques et les narre avec une douceur enveloppante qui calme instantanément les enfants.",
     "derniers_travaux": [],
@@ -63,12 +63,26 @@
   {
     "id": "julien_valory",
     "nom": "Julien Valory",
-    "role": "Compositeur",
+    "rôle": "Compositeur",
     "image": "assets/images/julien_valory.png",
     "description": "Julien compose des mélodies douces au piano et des nappes sonores féeriques pour accompagner les lectures audio d'Alekto.",
     "derniers_travaux": [],
     "nb_histoires": "20 Musiques",
     "citation": "",
     "citation_travaux": []
+  },
+  {
+    "id": "cc8323fd",
+    "nom": "Jeremy COLARD",
+    "rôle": "Auteur",
+    "image": "https://drive.google.com/thumbnail?id=1UeqbBi2Tgmpr_OomF_2io1JfZGu0kiGp&sz=w400",
+    "description": "I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling I got this feeling"
+  },
+  {
+    "id": "2fa08c53",
+    "nom": "Monika belluki",
+    "rôle": "Narrateur",
+    "image": "https://drive.google.com/thumbnail?id=1rgj9x-fnvf9FwUTpdPi5BigRRjkGYtMh&sz=w400",
+    "description": "ok"
   }
 ]

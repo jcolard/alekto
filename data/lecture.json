@@ -1,14 +1,51 @@
 [
   {
+    "id": "9a4198ed",
+    "pdf_url": "1HPrgRd3SwhkmG018AktjjhDWkhQ03_3R.pdf",
+    "ref_md": "",
+    "titre": "Les miserables",
+    "image": "https://drive.google.com/thumbnail?id=170dN0l0epsNXJS1zz4Ke9PZhFJ_jIbjB&sz=w400",
+    "description": "CECI",
+    "date": "2026-07-05T22:00:00.000Z",
+    "type": "Comte",
+    "contenu": "nom",
+    "artiste_ref": "2fa08c53 , cc8323fd"
+  },
+  {
+    "id": "96bcf71d",
+    "pdf_url": "1Q1Wv8ln-konvI0HJqBwGJGOO3OCfN5GO.pdf",
+    "ref_md": "",
+    "titre": "Une foret noirs",
+    "image": "https://drive.google.com/thumbnail?id=19TE87db0A7p1zaIpVfWI4IJwi1u1PZ90&sz=w400",
+    "description": "nop",
+    "date": "2026-07-05T22:00:00.000Z",
+    "type": "Recit",
+    "contenu": "ok",
+    "artiste_ref": "2fa08c53"
+  },
+  {
+    "id": "db212502",
+    "pdf_url": "1ImhLovqnS8y6Zh9LDI3ZW0DJwB9rzpt_.pdf",
+    "ref_md": "19rWnjqFSkQ81xhXBgDaIpKATEJyjn2rJ.md",
+    "titre": "f",
+    "image": null,
+    "description": "",
+    "date": "2026-07-05T22:00:00.000Z",
+    "type": "",
+    "contenu": "",
+    "artiste_ref": ""
+  },
+  {
     "id": "foret_de_verre",
     "pdf_url": "",
     "ref_md": "assets/markdown/foret_de_verre.md",
     "titre": "Le Secret de la Forêt de Verre",
     "image": "assets/images/foret_de_verre.png",
     "description": "Au cœur de la forêt, les arbres se mirent soudain à briller comme du cristal. Deux enfants s'aventurent à bord d'une barque mystérieuse pour découvrir le secret de cette transformation.",
-    "date": "12 min de lecture",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Récit",
-    "artiste_ref": ["julien_r"],
+    "contenu": "",
+    "artiste_ref": "julien_r",
     "la_une": true
   },
   {
@@ -18,9 +55,10 @@
     "titre": "La Valse des Lucioles",
     "image": "assets/images/valse_lucioles.png",
     "description": "Une mélodie enfantine et gracieuse au piano, idéale pour débuter l'apprentissage du rythme ternaire.",
-    "date": "Partition de musique",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Partition",
-    "artiste_ref": ["julien_valory"],
+    "contenu": "",
+    "artiste_ref": "julien_valory",
     "la_une": false
   },
   {
@@ -30,9 +68,10 @@
     "titre": "Le Renard Imposteur",
     "image": "assets/images/renard_imposteur.png",
     "description": "Pièce en deux actes pour enfants. Goupil essaie de se faire passer pour le roi des animaux en revêtant une fausse crinière, mais les oiseaux de la forêt veillent au grain.",
-    "date": "15 min de lecture",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Théâtre",
-    "artiste_ref": ["marc_voisin"],
+    "contenu": "",
+    "artiste_ref": "marc_voisin",
     "la_une": false
   },
   {
@@ -41,10 +80,11 @@
     "ref_md": "assets/markdown/baleineau_nuages.md",
     "titre": "Le Baleineau des Nuages",
     "image": "assets/images/baleineau_nuages.png",
-    "description": "Barnabé est un jeune baleineau qui vole parmi les nuages de coton. Un jour, il s'approche trop près d'un cumulus orageux et perd son chemin.",
-    "date": "8 min de lecture",
-    "type": "Conte",
-    "artiste_ref": ["elena_marcet"],
+    "description": "Barnabé est un jeune baleineau qui vole parmi les nuages de coton. Un jour, he s'approche trop près d'un cumulus orageux et perd son chemin.",
+    "date": "2026-07-06T10:00:00.000Z",
+    "type": "Comte",
+    "contenu": "",
+    "artiste_ref": "elena_marcet",
     "la_une": false
   },
   {
@@ -54,9 +94,10 @@
     "titre": "Le Piano Enchanté",
     "image": "assets/images/piano_enchante.png",
     "description": "Une composition douce d'Erik Satie simplifiée pour les jeunes pianistes.",
-    "date": "Partition de musique",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Partition",
-    "artiste_ref": ["julien_valory"],
+    "contenu": "",
+    "artiste_ref": "julien_valory",
     "la_une": false
   },
   {
@@ -66,9 +107,10 @@
     "titre": "L'Expédition des Cimes",
     "image": "assets/images/expedition_cimes.png",
     "description": "Barnabé l'ours randonneur décide de gravir le plus haut sommet de la région en compagnie de son ami le pinson. Une aventure de haute montagne pleine de solidarité.",
-    "date": "18 min de lecture",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Récit",
-    "artiste_ref": ["clara_malot"],
+    "contenu": "",
+    "artiste_ref": "clara_malot",
     "la_une": false
   },
   {
@@ -78,9 +120,10 @@
     "titre": "L'importance du conte dans le développement de l'enfant",
     "image": "assets/images/article_conte.png",
     "description": "Pourquoi raconter des histoires le soir aide à structurer l'imaginaire des tout-petits et à renforcer la confiance en soi.",
-    "date": "5 min de lecture",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Article",
-    "artiste_ref": ["clara_malot"],
+    "contenu": "",
+    "artiste_ref": "clara_malot",
     "la_une": false
   },
   {
@@ -90,9 +133,10 @@
     "titre": "Rencontre avec Clara Malot : écrire pour la planète",
     "image": "assets/images/article_clara.png",
     "description": "Entretien avec l'une de nos autrices phares qui partage ses inspirations écologiques et ses secrets d'écriture.",
-    "date": "8 min de lecture",
+    "date": "2026-07-06T10:00:00.000Z",
     "type": "Article",
-    "artiste_ref": ["clara_malot"],
+    "contenu": "",
+    "artiste_ref": "clara_malot",
     "la_une": false
   },
   {
@@ -102,9 +146,10 @@
     "titre": "Le Petit Renard des Étoiles",
     "image": "assets/images/petit_renard.png",
     "description": "Il était une fois, niché entre les anneaux de Saturne, un petit renard dont le pelage brillait comme du cuivre poli au soleil de midi...",
-    "date": "10 min de lecture",
-    "type": "Conte",
-    "artiste_ref": ["clara_malot"],
+    "date": "2026-07-06T10:00:00.000Z",
+    "type": "Comte",
+    "contenu": "",
+    "artiste_ref": "clara_malot",
     "la_une": false
   }
 ]
