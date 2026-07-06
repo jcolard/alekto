@@ -392,7 +392,7 @@ function renderAccueil() {
           </div>
           <div class="audio-info">
             <h4>${audio.titre}</h4>
-            <p>${audio.duree.replace(':', ' min ')}</p>
+            <p>${audio.duree ? audio.duree.replace(':', ' min ') : ''}</p>
           </div>
         </div>
       `;
@@ -688,7 +688,7 @@ function loadAudioIntoPlayer(id) {
   // Render Player View HTML Contents
   document.getElementById('player-artwork').style.backgroundImage = `url('${audio.image}')`;
   document.getElementById('player-title').textContent = audio.titre;
-  document.getElementById('player-subtitle').textContent = `${audio.categorie} par ${audio.narrateur_nom}`;
+  document.getElementById('player-subtitle').textContent = `${audio.categorie} par ${audio.narrateur_nom || getFirstArtistName(audio.artiste_ref)}`;
   
   document.getElementById('player-description').textContent = audio.description;
   
@@ -1067,7 +1067,7 @@ function updateMiniPlayerUI() {
   
   document.getElementById('mini-cover-img').style.backgroundImage = `url('${playerState.currentAudio.image}')`;
   document.getElementById('mini-title').textContent = playerState.currentAudio.titre;
-  document.getElementById('mini-narrator').textContent = `Narré par ${playerState.currentAudio.narrateur_nom}`;
+  document.getElementById('mini-narrator').textContent = `Narré par ${playerState.currentAudio.narrateur_nom || getFirstArtistName(playerState.currentAudio.artiste_ref)}`;
 }
 
 function updatePlayerDurationUI() {
