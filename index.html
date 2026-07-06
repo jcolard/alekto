@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F27A54">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/images/logo_192.png">
+  <title>Alekto - Application de Podcasts & Lectures Libres</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- HTML5 Audio Element -->
+  <audio id="main-audio-element" preload="auto"></audio>
+
+  <!-- Application Dynamic Header -->
+    <header id="app-header">
+      <div class="header-left" id="header-left-slot">
+        <!-- Logo -->
+        <img src="logo.png" alt="Alekto Logo" class="logo-img" id="header-avatar">
+        <button class="icon-btn back-btn" id="header-back-btn" aria-label="Retour" style="display: none;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+      </div>
+      <h1 id="header-title" class="brand-title">Alekto</h1>
+      <div class="header-right">
+        <button class="icon-btn search-btn" id="btn-open-search" aria-label="Recherche">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="icon-btn settings-btn" id="btn-open-settings" aria-label="Paramètres">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Viewport -->
+    <main id="app-viewport">
+      
+      <!-- 1. VUE ACCUEIL -->
+      <section id="view-accueil" class="app-view active">
+        <div class="view-intro">
+          <h2>Bonjour, petit explorateur !</h2>
+          <p class="subtitle">Quelle histoire allons-nous vivre aujourd'hui ?</p>
+        </div>
+
+        <!-- Orange hero card: Continuer l'écoute -->
+        <div id="continue-listening-card" class="hero-orange-card">
+          <span class="card-tag">CONTINUER L'ÉCOUTE</span>
+          <div class="hero-cover-wrapper">
+            <div class="hero-cover-img" id="hero-continue-img" style="background-image: url('assets/images/petit_renard.png')"></div>
+          </div>
+          <h3 id="hero-continue-title" class="hero-card-title">Le Renard et l'Étoile Perdue</h3>
+          
+          <div class="hero-progress-container">
+            <div class="hero-progress-bar">
+              <div class="hero-progress-fill" id="hero-continue-fill" style="width: 70%"></div>
+            </div>
+            <div class="hero-progress-time" id="hero-continue-time">12:45 / 18:20</div>
+          </div>
+
+          <button class="hero-play-btn" id="hero-continue-play-btn" aria-label="Jouer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          </button>
+        </div>
+
+        <!-- Dynamic Categories Container -->
+        <div id="dynamic-categories-container">
+          <!-- Dynamically populated from JS based on JSON categories -->
+        </div>
+      </section>
+
+      <!-- 2. VUE ARTISTES -->
+      <section id="view-artistes" class="app-view">
+        <!-- Header Card: Nos Artistes Libres -->
+        <div class="hero-yellow-card">
+          <span class="yellow-tag">Communauté & Art</span>
+          <h2>Nos Artistes Libres</h2>
+          <p>Alekto est une plateforme associative. Chaque histoire que vous écoutez soutient directement le travail d'auteurs et de narrateurs indépendants. Découvrez les voix et les plumes qui enchantent vos soirées.</p>
+          <button class="join-btn">Devenir membre <span class="heart">&hearts;</span></button>
+          <div class="yellow-hero-image" style="background-image: url('assets/images/alekto_hero.png')"></div>
+        </div>
+
+        <!-- Articles de lecture section -->
+        <div class="section-container" style="margin-top: 24px;">
+          <div class="section-header">
+            <h3>Articles de lecture</h3>
+            <a href="#lecture" class="see-all-link">Tout voir</a>
+          </div>
+          
+          <div class="horizontal-scroll" id="articles-horizontal-list">
+            <!-- Dynamically populated articles -->
+          </div>
+        </div>
+
+        <!-- Artist Filter pills -->
+        <div class="filter-bar" style="margin-top: 16px;">
+          <button class="filter-pill active" data-role="Tous">Tous les Artistes</button>
+          <button class="filter-pill" data-role="Écrivains">Auteurs</button>
+          <button class="filter-pill" data-role="Narrateurs">Narrateurs</button>
+          <button class="filter-pill" data-role="Illustrateurs">Illustrateurs</button>
+        </div>
+
+        <!-- Artist cards list -->
+        <div class="artists-list" id="artists-container">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Creator Callout -->
+        <div class="creator-callout">
+          <h3>Vous êtes un créateur ?</h3>
+          <p>Rejoignez notre association et proposez vos histoires à des milliers de familles. Nous prônons une rémunération juste et un accompagnement artistique complet.</p>
+          <a href="#" class="charter-link">Consulter la charte créateur &rarr;</a>
+        </div>
+      </section>
+
+      <!-- 3. VUE LECTURE -->
+      <section id="view-lecture" class="app-view">
+        <div class="view-intro">
+          <h2>Lecture</h2>
+          <p class="subtitle">Prolonge l'aventure avec des histoires à lire, des pièces à jouer et des mélodies à déchiffrer. Le compagnon idéal de tes contes audios.</p>
+        </div>
+
+        <!-- Category Filter pills -->
+        <div class="filter-bar scrollable-filters" id="lecture-filters">
+          <button class="filter-pill active" data-type="Tous">Tous</button>
+          <button class="filter-pill" data-type="Conte">Contes</button>
+          <button class="filter-pill" data-type="Théâtre">Théâtre</button>
+          <button class="filter-pill" data-type="Récit">Récits</button>
+          <button class="filter-pill" data-type="Partition">Partitions</button>
+          <button class="filter-pill" data-type="Article">Articles</button>
+        </div>
+
+        <!-- Readings list -->
+        <div class="readings-list" id="readings-container">
+          <!-- Dynamically populated cards -->
+        </div>
+      </section>
+
+      <!-- 4. VUE DÉTAIL AUDIO -->
+      <section id="view-audio-detail" class="app-view detail-view">
+        <!-- Close/Back header handles this, but let's make it beautiful -->
+        <div class="player-card-wrapper">
+          <div class="player-cover-card">
+            <span class="player-format-badge">Lecteur Audio</span>
+            <div class="player-cover-image" id="player-artwork"></div>
+            <!-- Small playcontrols inside cover card matching mockup 2 -->
+            <div class="cover-mini-controls">
+              <span id="player-cover-time-start">1:47</span>
+              <div class="cover-mini-progress">
+                <div class="cover-mini-progress-fill" style="width: 40%"></div>
+              </div>
+              <span id="player-cover-time-end">4:23</span>
+              <div class="cover-control-buttons">
+                <button class="cover-control-btn prev-btn">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2"></line></svg>
+                </button>
+                <button class="cover-control-btn play-pause-btn active-btn">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+                <button class="cover-control-btn next-btn">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"></line></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="audio-meta-header">
+          <h2 id="player-title">Le Dragon des Nuages</h2>
+          <p class="subtitle" id="player-subtitle">Conté par Mamie Chiffon</p>
+        </div>
+
+        <!-- Custom wavy progress bar -->
+        <div class="wavy-progress-container" id="wavy-seeker">
+          <svg class="wavy-progress-svg" viewBox="0 0 300 24" preserveAspectRatio="none">
+            <!-- Background wave -->
+            <path class="wave-bg" d="M 0 12 Q 15 6, 30 12 T 60 12 T 90 12 T 120 12 T 150 12 T 180 12 T 210 12 T 240 12 T 270 12 T 300 12" fill="none" stroke="#E6DFD5" stroke-width="3" stroke-linecap="round"/>
+            <!-- Active wave filled dynamic -->
+            <path class="wave-fill" id="wave-progress-path" d="M 0 12 Q 15 6, 30 12 T 60 12 T 90 12 T 120 12 T 150 12 T 180 12 T 210 12 T 240 12 T 270 12 T 300 12" fill="none" stroke="#168B8D" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <!-- Seeker thumb ball -->
+          <div class="wave-thumb" id="wave-seeker-thumb"></div>
+        </div>
+
+        <div class="player-time-row">
+          <span id="player-time-current">08:42</span>
+          <span id="player-time-duration">15:30</span>
+        </div>
+
+        <!-- Main Player controls -->
+        <div class="main-player-controls">
+          <button class="player-btn seek-btn" id="btn-replay-10" aria-label="Reculer de 10 secondes">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <polyline points="3 3 3 8 8 8"></polyline>
+              <text x="12" y="15" font-size="8" font-family="sans-serif" font-weight="900" text-anchor="middle" fill="currentColor" stroke="none">10</text>
+            </svg>
+          </button>
+          
+          <button class="player-btn main-play-pause-btn" id="btn-main-play" aria-label="Jouer/Pause">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" id="main-play-icon">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+          </button>
+
+          <button class="player-btn seek-btn" id="btn-forward-10" aria-label="Avancer de 10 secondes">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+              <polyline points="21 3 21 8 16 8"></polyline>
+              <text x="12" y="15" font-size="8" font-family="sans-serif" font-weight="900" text-anchor="middle" fill="currentColor" stroke="none">10</text>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Description Section -->
+        <div class="player-section-card peach-bg">
+          <h3>À propos</h3>
+          <p id="player-description"></p>
+        </div>
+
+        <!-- Section: Les Artistes -->
+        <div class="player-artists-section">
+          <h3>Les Artistes</h3>
+          <div class="artists-list-vertical" id="player-artists-list">
+            <!-- Dynamically filled with artists -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. VUE DÉTAIL LECTURE ET ARTICLE (READER) -->
+      <section id="view-lecture-detail" class="app-view detail-view">
+        <!-- Floating Reader Top Bar -->
+        <div class="reader-top-bar">
+          <button class="icon-btn reader-back-btn" id="reader-close-btn" aria-label="Fermer la lecture">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <button class="icon-btn reader-text-settings" aria-label="Paramètres de lecture">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Reader Text Container -->
+        <div class="reader-text-viewport" id="reader-content-area">
+          <!-- Dynamically populated text content. Multi-page layout or scrolling. -->
+          <div class="dropcap-paragraph">
+            <span class="dropcap">I</span>l était une fois, niché entre les anneaux de Saturne, un petit renard dont le pelage brillait comme du cuivre poli au soleil de midi. Ce n'était pas un renard ordinaire ; ses oreilles étaient assez grandes pour capter le murmure des comètes qui passaient...
+          </div>
+        </div>
+
+        <!-- Reader Bottom Floating Card -->
+        <div class="reader-footer-card">
+          <div class="reader-meta-info">
+            <h4 id="reader-title-display">Le Petit Renard des Étoiles</h4>
+            <p id="reader-author-display">Par Clara Malot</p>
+          </div>
+          <span class="reader-type-badge" id="reader-type-display">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span id="reader-type-text">Conte</span>
+          </span>
+        </div>
+
+        <!-- Page Indicator & Progress Line -->
+        <div class="reader-pagination-container" id="reader-page-controls">
+          <div class="reader-page-number" id="reader-page-indicator">Page 1 sur 4</div>
+          <div class="reader-progress-line">
+            <div class="reader-progress-fill" id="reader-page-progress" style="width: 25%"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Floating Mini Player -->
+    <div id="mini-player" style="display: none;">
+      <div class="mini-player-clickable" id="mini-player-body">
+        <div class="mini-player-cover" id="mini-cover-img" style="background-image: url('assets/images/petit_renard.png')"></div>
+        <div class="mini-player-text">
+          <h4 id="mini-title">Le Renard et l'Étoile...</h4>
+          <p id="mini-narrator">Narré par Marc Voisin</p>
+        </div>
+        <div class="mini-player-progress-container">
+          <div class="mini-player-progress-bar">
+            <div class="mini-player-progress-fill" id="mini-progress-fill" style="width: 40%"></div>
+          </div>
+          <span class="mini-player-status" id="mini-status-text">Lecture en cours</span>
+        </div>
+      </div>
+      <button class="mini-play-btn" id="mini-play-pause-btn" aria-label="Jouer/Pause">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" id="mini-play-icon"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+      </button>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav id="bottom-nav">
+      <a href="#accueil" class="nav-item active" id="nav-accueil">
+        <svg viewBox="0 0 24 24" class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Accueil</span>
+      </a>
+      <a href="#artistes" class="nav-item" id="nav-artistes">
+        <svg viewBox="0 0 24 24" class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19H4.87012C5.4542 19 5.86438 19.4673 5.96839 20.0384C6.06456 20.5663 6.36836 21.0963 6.9161 21.4614C7.88796 22.109 9.3878 22 12 22Z"></path>
+          <circle cx="7.5" cy="10.5" r="1.5"></circle>
+          <circle cx="11.5" cy="7.5" r="1.5"></circle>
+          <circle cx="16.5" cy="9.5" r="1.5"></circle>
+          <circle cx="15.5" cy="14.5" r="1.5"></circle>
+        </svg>
+        <span>Artistes</span>
+      </a>
+      <a href="#lecture" class="nav-item" id="nav-lecture">
+        <svg viewBox="0 0 24 24" class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Lecture</span>
+      </a>
+    </nav>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="search-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Recherche</h2>
+        <button class="icon-btn close-modal" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="search-input-container">
+        <input type="text" id="search-input" placeholder="Chercher un titre, un auteur...">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="settings-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Paramètres</h2>
+        <button class="icon-btn close-modal" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="settings-options">
+        <div class="setting-item">
+          <span>Mode Sombre</span>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <span>Taille du texte (Lecture)</span>
+          <div class="font-size-controls">
+            <button id="font-size-decrease" class="font-btn">A-</button>
+            <button id="font-size-increase" class="font-btn">A+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="pwa-install-banner" style="display: none;">
+    <div class="modal-content" style="text-align: center;">
+      <h2>Installer Alekto</h2>
+      <p style="margin-top: 10px; margin-bottom: 20px;">Installez l'application Alekto sur votre écran d'accueil pour y accéder rapidement et l'utiliser hors ligne.</p>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button id="pwa-btn-cancel" class="font-btn" style="border-color: var(--text-muted); color: var(--text-muted); background: transparent;">Plus tard</button>
+        <button id="pwa-btn-install" class="font-btn" style="background-color: var(--color-orange); border-color: var(--color-orange); color: white;">Installer</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

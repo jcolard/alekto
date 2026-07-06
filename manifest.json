@@ -1,0 +1,23 @@
+{
+  "name": "Alekto",
+  "short_name": "Alekto",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAF6F0",
+  "theme_color": "#F27A54",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "foret_de_verre",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/foret_de_verre.md",
+    "titre": "Le Secret de la Forêt de Verre",
+    "image": "assets/images/foret_de_verre.png",
+    "description": "Au cœur de la forêt, les arbres se mirent soudain à briller comme du cristal. Deux enfants s'aventurent à bord d'une barque mystérieuse pour découvrir le secret de cette transformation.",
+    "date": "12 min de lecture",
+    "type": "Récit",
+    "artiste_ref": ["julien_r"],
+    "la_une": true
+  },
+  {
+    "id": "valse_lucioles",
+    "pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "ref_md": "",
+    "titre": "La Valse des Lucioles",
+    "image": "assets/images/valse_lucioles.png",
+    "description": "Une mélodie enfantine et gracieuse au piano, idéale pour débuter l'apprentissage du rythme ternaire.",
+    "date": "Partition de musique",
+    "type": "Partition",
+    "artiste_ref": ["julien_valory"],
+    "la_une": false
+  },
+  {
+    "id": "renard_imposteur",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/renard_imposteur.md",
+    "titre": "Le Renard Imposteur",
+    "image": "assets/images/renard_imposteur.png",
+    "description": "Pièce en deux actes pour enfants. Goupil essaie de se faire passer pour le roi des animaux en revêtant une fausse crinière, mais les oiseaux de la forêt veillent au grain.",
+    "date": "15 min de lecture",
+    "type": "Théâtre",
+    "artiste_ref": ["marc_voisin"],
+    "la_une": false
+  },
+  {
+    "id": "baleineau_nuages",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/baleineau_nuages.md",
+    "titre": "Le Baleineau des Nuages",
+    "image": "assets/images/baleineau_nuages.png",
+    "description": "Barnabé est un jeune baleineau qui vole parmi les nuages de coton. Un jour, il s'approche trop près d'un cumulus orageux et perd son chemin.",
+    "date": "8 min de lecture",
+    "type": "Conte",
+    "artiste_ref": ["elena_marcet"],
+    "la_une": false
+  },
+  {
+    "id": "piano_enchante",
+    "pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "ref_md": "",
+    "titre": "Le Piano Enchanté",
+    "image": "assets/images/piano_enchante.png",
+    "description": "Une composition douce d'Erik Satie simplifiée pour les jeunes pianistes.",
+    "date": "Partition de musique",
+    "type": "Partition",
+    "artiste_ref": ["julien_valory"],
+    "la_une": false
+  },
+  {
+    "id": "expedition_cimes",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/expedition_cimes.md",
+    "titre": "L'Expédition des Cimes",
+    "image": "assets/images/expedition_cimes.png",
+    "description": "Barnabé l'ours randonneur décide de gravir le plus haut sommet de la région en compagnie de son ami le pinson. Une aventure de haute montagne pleine de solidarité.",
+    "date": "18 min de lecture",
+    "type": "Récit",
+    "artiste_ref": ["clara_malot"],
+    "la_une": false
+  },
+  {
+    "id": "importance_conte",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/importance_conte.md",
+    "titre": "L'importance du conte dans le développement de l'enfant",
+    "image": "assets/images/article_conte.png",
+    "description": "Pourquoi raconter des histoires le soir aide à structurer l'imaginaire des tout-petits et à renforcer la confiance en soi.",
+    "date": "5 min de lecture",
+    "type": "Article",
+    "artiste_ref": ["clara_malot"],
+    "la_une": false
+  },
+  {
+    "id": "rencontre_clara",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/rencontre_clara.md",
+    "titre": "Rencontre avec Clara Malot : écrire pour la planète",
+    "image": "assets/images/article_clara.png",
+    "description": "Entretien avec l'une de nos autrices phares qui partage ses inspirations écologiques et ses secrets d'écriture.",
+    "date": "8 min de lecture",
+    "type": "Article",
+    "artiste_ref": ["clara_malot"],
+    "la_une": false
+  },
+  {
+    "id": "petit_renard_etoiles",
+    "pdf_url": "",
+    "ref_md": "assets/markdown/petit_renard_etoiles.md",
+    "titre": "Le Petit Renard des Étoiles",
+    "image": "assets/images/petit_renard.png",
+    "description": "Il était une fois, niché entre les anneaux de Saturne, un petit renard dont le pelage brillait comme du cuivre poli au soleil de midi...",
+    "date": "10 min de lecture",
+    "type": "Conte",
+    "artiste_ref": ["clara_malot"],
+    "la_une": false
+  }
+]

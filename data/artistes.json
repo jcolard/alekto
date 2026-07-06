@@ -1,0 +1,74 @@
+[
+  {
+    "id": "clara_malot",
+    "nom": "Clara Malot",
+    "role": "ÉCRITAINE & ACTRICE",
+    "image": "assets/images/clara_malot.png",
+    "description": "Spécialiste des contes écologiques. Clara imagine des mondes où la nature reprend ses droits avec douceur. Ses récits sont teintés de poésie et d'émerveillement.",
+    "derniers_travaux": [
+      "assets/images/creation_tree.png",
+      "assets/images/creation_whale.png"
+    ],
+    "nb_histoires": "8 Histoires",
+    "citation": "",
+    "citation_travaux": []
+  },
+  {
+    "id": "marc_voisin",
+    "nom": "Marc Voisin",
+    "role": "NARRATEUR",
+    "image": "assets/images/marc_voisin.png",
+    "description": "La 'voix d'or' d'Alekto. Marc a le don de transformer chaque lecture en un voyage sensoriel unique grâce à son timbre profond et apaisant.",
+    "derniers_travaux": [],
+    "nb_histoires": "12 Histoires",
+    "citation": "",
+    "citation_travaux": []
+  },
+  {
+    "id": "yumi_sato",
+    "nom": "Yumi Sato",
+    "role": "Illustratrice",
+    "image": "assets/images/yumi_sato.png",
+    "description": "Illustratrice jeunesse passionnée par les mondes fantastiques et oniriques.",
+    "derniers_travaux": [],
+    "nb_histoires": "15 Histoires",
+    "citation": "Donner vie aux rêves des enfants par la couleur et la forme.",
+    "citation_travaux": [
+      "assets/images/illustration_dream.png",
+      "assets/images/illustration_monsters.png"
+    ]
+  },
+  {
+    "id": "julien_r",
+    "nom": "Julien R.",
+    "role": "Auteur",
+    "image": "assets/images/julien_r.png",
+    "description": "Auteur passionné de science-fiction pour les enfants, inventant des voyages stellaires incroyables.",
+    "derniers_travaux": [],
+    "nb_histoires": "6 Histoires",
+    "citation": "",
+    "citation_travaux": []
+  },
+  {
+    "id": "elena_marcet",
+    "nom": "Elena Marcet",
+    "role": "Autrice & Narratrice",
+    "image": "assets/images/elena_marcet.png",
+    "description": "Elena écrit des contes philosophiques et les narre avec une douceur enveloppante qui calme instantanément les enfants.",
+    "derniers_travaux": [],
+    "nb_histoires": "9 Histoires",
+    "citation": "",
+    "citation_travaux": []
+  },
+  {
+    "id": "julien_valory",
+    "nom": "Julien Valory",
+    "role": "Compositeur",
+    "image": "assets/images/julien_valory.png",
+    "description": "Julien compose des mélodies douces au piano et des nappes sonores féeriques pour accompagner les lectures audio d'Alekto.",
+    "derniers_travaux": [],
+    "nb_histoires": "20 Musiques",
+    "citation": "",
+    "citation_travaux": []
+  }
+]
